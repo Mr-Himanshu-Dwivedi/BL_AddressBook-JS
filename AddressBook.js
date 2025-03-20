@@ -46,10 +46,24 @@ function addContact(contact) {
     }
 }
 
+// Function to Edit Contact
+function editContact(name, updatedDetails) {
+    let contact = addressBook.find(c => c.firstName === name);
+    if (contact) {
+        Object.assign(contact, updatedDetails);
+        console.log("Contact Updated:", contact.toString());
+    } else {
+        console.log("Contact Not Found");
+    }
+}
+
 // Adding Contacts
 addContact(new Contact("Himanshu", "Dwivedi", "GLA UNIVERSITY", "Mathura", "UP", "281406", "1234567890", "Himanshu@gmail.com"));
 addContact(new Contact("Amit", "Sharma", "Delhi University", "Delhi", "DL", "110007", "9876543210", "amit.sharma@example.com"));
 
+// Editing Contact
+editContact("Himanshu", { address: "New GLA UNIVERSITY", city: "Agra", zip: "282001" });
+
 // Display All Contacts
-console.log("\nAddress Book:");
+console.log("\nUpdated Address Book:");
 addressBook.forEach(contact => console.log(contact.toString()));
