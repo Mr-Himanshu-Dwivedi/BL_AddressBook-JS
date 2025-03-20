@@ -142,6 +142,32 @@ function viewPersonsByState() {
     console.log("---------------------------------------------------------------------------------");
 }
 
+// Function to Count Persons by City
+function countByCity() {
+    let cityCount = addressBook.reduce((map, contact) => {
+        map[contact.city] = (map[contact.city] || 0) + 1;
+        return map;
+    }, {});
+
+    console.log("Number of Persons by City:");
+    console.log(cityCount);
+    console.log("---------------------------------------------------------------------------------");
+}
+
+// Function to Count Persons by State
+function countByState() {
+    let stateCount = addressBook.reduce((map, contact) => {
+        map[contact.state] = (map[contact.state] || 0) + 1;
+        return map;
+    }, {});
+
+    console.log("Number of Persons by State:");
+    console.log(stateCount);
+    console.log("---------------------------------------------------------------------------------");
+}
+
+
+
 // Adding Contacts
 addContact(new Contact("Himanshu", "Dwivedi", "GLA UNIVERSITY", "Mathura", "UP", "281406", "1234567890", "himanshu@gmail.com"));
 addContact(new Contact("Hima", "Dwivedi", "UNIVERSITY", "Mathura", "UP", "281406", "1234567891", "hima@gmail.com"));
@@ -175,6 +201,12 @@ viewPersonsByCity();
 
 // View Persons by State
 viewPersonsByState();
+
+// Count Contacts by City
+countByCity();
+
+// Count Contacts by State
+countByState();
 
 // Display All Contacts
 console.log("Updated Address Book:");
