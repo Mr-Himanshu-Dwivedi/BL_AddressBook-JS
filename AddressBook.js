@@ -36,9 +36,20 @@ class Contact {
 // Address Book Array
 let addressBook = [];
 
+// Function to Check for Duplicate Contacts
+function isDuplicate(contact) {
+    return addressBook.some(c => c.firstName === contact.firstName && c.lastName === contact.lastName);
+}
+
 // Function to Add Contact
 function addContact(contact) {
     try {
+        if (isDuplicate(contact)) {
+            console.log("Duplicate Contact Found. Cannot Add:");
+            console.log(contact.toString());
+            console.log();
+            return;
+        }
         addressBook.push(contact);
         console.log("Contact Added:", contact.toString());
         console.log();
@@ -86,9 +97,16 @@ function getContactCount() {
 }
 
 // Adding Contacts
-addContact(new Contact("Himanshu", "Dwivedi", "GLA UNIVERSITY", "Mathura", "UP", "281406", "1234567890", "Himanshu@gmail.com"));
-addContact(new Contact("Hima", "Dwivedi", "UNIVERSITY", "Mathura", "UP", "281406", "1234567890", "Himanshu@gmail.com"));
-addContact(new Contact("Anshu", "Dwivedi", "GLAU", "Mathura", "UP", "281406", "1234567890", "Himanshu@gmail.com"));
+addContact(new Contact("Himanshu", "Dwivedi", "GLA UNIVERSITY", "Mathura", "UP", "281406", "1234567890", "himanshu@gmail.com"));
+addContact(new Contact("Hima", "Dwivedi", "UNIVERSITY", "Mathura", "UP", "281406", "1234567891", "hima@gmail.com"));
+addContact(new Contact("Anshu", "Dwivedi", "GLAU", "Mathura", "UP", "281406", "1234567892", "anshu@gmail.com"));
+addContact(new Contact("Amit", "Sharma", "Delhi University", "Delhi", "DL", "110007", "9876543210", "amit.sharma@example.com"));
+addContact(new Contact("Rahul", "Verma", "Mumbai Street", "Mumbai", "MH", "400001", "9234567890", "rahul.verma@example.com"));
+addContact(new Contact("Priya", "Singh", "Sector 5", "Noida", "UP", "201301", "9345678901", "priya.singh@example.com"));
+addContact(new Contact("Neha", "Kapoor", "Park Avenue", "Pune", "MH", "411001", "9123456789", "neha.kapoor@example.com"));
+
+// Adding Duplicate Contacts (Should be blocked)
+addContact(new Contact("Himanshu", "Dwivedi", "GLA UNIVERSITY", "Mathura", "UP", "281406", "1234567890", "himanshu@gmail.com"));
 addContact(new Contact("Amit", "Sharma", "Delhi University", "Delhi", "DL", "110007", "9876543210", "amit.sharma@example.com"));
 
 // Editing Contact
