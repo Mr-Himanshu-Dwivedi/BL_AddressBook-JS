@@ -33,18 +33,23 @@ class Contact {
     }
 }
 
-// Example with Valid Contact
-try {
-    let contact = new Contact("Himanshu", "Dwivedi", "GLA UNIVERSITY", "Mathura", "UP", "281406", "1234567890", "Himanshu@gmail.com");
-    console.log(contact.toString());
-} catch (error) {
-    console.error(error.message);
+// Address Book Array
+let addressBook = [];
+
+// Function to Add Contact
+function addContact(contact) {
+    try {
+        addressBook.push(contact);
+        console.log("Contact Added:", contact.toString());
+    } catch (error) {
+        console.error(error.message);
+    }
 }
 
-// Example with Invalid Contact
-try {
-    let invalidContact = new Contact("hi", "Dw", "GLA", "Ma", "U", "123", "98765", "invalid.email");
-    console.log(invalidContact.toString());
-} catch (error) {
-    console.error(error.message);
-}
+// Adding Contacts
+addContact(new Contact("Himanshu", "Dwivedi", "GLA UNIVERSITY", "Mathura", "UP", "281406", "1234567890", "Himanshu@gmail.com"));
+addContact(new Contact("Amit", "Sharma", "Delhi University", "Delhi", "DL", "110007", "9876543210", "amit.sharma@example.com"));
+
+// Display All Contacts
+console.log("\nAddress Book:");
+addressBook.forEach(contact => console.log(contact.toString()));
