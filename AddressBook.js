@@ -166,6 +166,13 @@ function countByState() {
     console.log("---------------------------------------------------------------------------------");
 }
 
+// Function to Sort Contacts Alphabetically by Name
+function sortByName() {
+    addressBook.sort((a, b) => a.firstName.localeCompare(b.firstName));
+    console.log("Address Book Sorted Alphabetically by Name:");
+    addressBook.forEach(contact => console.log(contact.toString()));
+    console.log("---------------------------------------------------------------------------------");
+}
 
 
 // Adding Contacts
@@ -210,4 +217,8 @@ countByState();
 
 // Display All Contacts
 console.log("Updated Address Book:");
-addressBook.forEach(contact => console.log(contact.toString() + "\n"));
+addressBook.forEach(contact => console.log(contact.toString()));
+console.log("---------------------------------------------------------------------------------");
+
+// Sorting Contacts by Name
+sortByName();
