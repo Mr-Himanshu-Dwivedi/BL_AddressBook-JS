@@ -174,6 +174,15 @@ function sortByName() {
     console.log("---------------------------------------------------------------------------------");
 }
 
+// Function to Sort Contacts by a Given Property (City, State, or Zip)
+function getSortedBy(property) {
+    let sortedContacts = [...addressBook].sort((a, b) => a[property].localeCompare(b[property]));
+
+    console.log(`Sorted Address Book by ${property}:`);
+    sortedContacts.forEach(contact => console.log(contact.toString()));
+    console.log("---------------------------------------------------------------------------------");
+}
+
 
 // Adding Contacts
 addContact(new Contact("Himanshu", "Dwivedi", "GLA UNIVERSITY", "Mathura", "UP", "281406", "1234567890", "himanshu@gmail.com"));
@@ -222,3 +231,12 @@ console.log("-------------------------------------------------------------------
 
 // Sorting Contacts by Name
 sortByName();
+
+// Sorting by City
+getSortedBy("city");
+
+// Sorting by State
+getSortedBy("state");
+
+// Sorting by Zip
+getSortedBy("zip");
