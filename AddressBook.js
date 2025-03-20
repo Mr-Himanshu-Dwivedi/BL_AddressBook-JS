@@ -41,8 +41,10 @@ function addContact(contact) {
     try {
         addressBook.push(contact);
         console.log("Contact Added:", contact.toString());
+        console.log();
     } catch (error) {
         console.error(error.message);
+        console.log();
     }
 }
 
@@ -50,10 +52,29 @@ function addContact(contact) {
 function editContact(name, updatedDetails) {
     let contact = addressBook.find(c => c.firstName === name);
     if (contact) {
+        console.log("Editing Contact:", contact.toString());
+        console.log();
         Object.assign(contact, updatedDetails);
         console.log("Contact Updated:", contact.toString());
+        console.log();
     } else {
         console.log("Contact Not Found");
+        console.log();
+    }
+}
+
+// Function to Delete Contact
+function deleteContact(name) {
+    let index = addressBook.findIndex(c => c.firstName === name);
+    if (index !== -1) {
+        console.log("Deleting Contact:", addressBook[index].toString());
+        console.log();
+        addressBook.splice(index, 1);
+        console.log("Contact Deleted Successfully");
+        console.log();
+    } else {
+        console.log("Contact Not Found");
+        console.log();
     }
 }
 
@@ -64,6 +85,9 @@ addContact(new Contact("Amit", "Sharma", "Delhi University", "Delhi", "DL", "110
 // Editing Contact
 editContact("Himanshu", { address: "New GLA UNIVERSITY", city: "Agra", zip: "282001" });
 
+// Deleting Contact
+deleteContact("Himanshu");
+
 // Display All Contacts
-console.log("\nUpdated Address Book:");
-addressBook.forEach(contact => console.log(contact.toString()));
+console.log("Updated Address Book:");
+addressBook.forEach(contact => console.log(contact.toString() + "\n"));
