@@ -47,7 +47,7 @@ function addContact(contact) {
         if (isDuplicate(contact)) {
             console.log("Duplicate Contact Found. Cannot Add:");
             console.log(contact.toString());
-            console.log();
+            console.log("---------------------------------------------------------------------------------");
             return;
         }
         addressBook.push(contact);
@@ -55,7 +55,7 @@ function addContact(contact) {
         console.log();
     } catch (error) {
         console.error(error.message);
-        console.log();
+        console.log("---------------------------------------------------------------------------------");
     }
 }
 
@@ -64,13 +64,13 @@ function editContact(name, updatedDetails) {
     let contact = addressBook.find(c => c.firstName === name);
     if (contact) {
         console.log("Editing Contact:", contact.toString());
-        console.log();
+        console.log("---------------------------------------------------------------------------------");
         Object.assign(contact, updatedDetails);
         console.log("Contact Updated:", contact.toString());
-        console.log();
+        console.log("---------------------------------------------------------------------------------");
     } else {
         console.log("Contact Not Found");
-        console.log();
+        console.log("---------------------------------------------------------------------------------");
     }
 }
 
@@ -79,13 +79,13 @@ function deleteContact(name) {
     let index = addressBook.findIndex(c => c.firstName === name);
     if (index !== -1) {
         console.log("Deleting Contact:", addressBook[index].toString());
-        console.log();
+        console.log("---------------------------------------------------------------------------------");
         addressBook.splice(index, 1);
         console.log("Contact Deleted Successfully");
-        console.log();
+        console.log("---------------------------------------------------------------------------------");
     } else {
         console.log("Contact Not Found");
-        console.log();
+        console.log("---------------------------------------------------------------------------------");
     }
 }
 
@@ -93,7 +93,23 @@ function deleteContact(name) {
 function getContactCount() {
     let count = addressBook.reduce(count => count + 1, 0);
     console.log("Total Number of Contacts:", count);
-    console.log();
+    console.log("---------------------------------------------------------------------------------");
+}
+
+// Function to Search Persons by City
+function searchByCity(city) {
+    let results = addressBook.filter(contact => contact.city === city);
+    console.log(`Contacts in ${city}:`);
+    results.forEach(contact => console.log(contact.toString()));
+    console.log("---------------------------------------------------------------------------------");
+}
+
+// Function to Search Persons by State
+function searchByState(state) {
+    let results = addressBook.filter(contact => contact.state === state);
+    console.log(`Contacts in ${state}:`);
+    results.forEach(contact => console.log(contact.toString()));
+    console.log("---------------------------------------------------------------------------------");
 }
 
 // Adding Contacts
@@ -117,6 +133,12 @@ deleteContact("Himanshu");
 
 // Display Total Contacts Count
 getContactCount();
+
+// Search for Contacts in Mathura
+searchByCity("Mathura");
+
+// Search for Contacts in UP
+searchByState("UP");
 
 // Display All Contacts
 console.log("Updated Address Book:");
