@@ -52,7 +52,7 @@ function addContact(contact) {
         }
         addressBook.push(contact);
         console.log("Contact Added:", contact.toString());
-        console.log();
+        console.log("---------------------------------------------------------------------------------");
     } catch (error) {
         console.error(error.message);
         console.log("---------------------------------------------------------------------------------");
@@ -112,6 +112,36 @@ function searchByState(state) {
     console.log("---------------------------------------------------------------------------------");
 }
 
+// Function to View Persons by City
+function viewPersonsByCity() {
+    let personsByCity = addressBook.reduce((map, contact) => {
+        if (!map[contact.city]) {
+            map[contact.city] = [];
+        }
+        map[contact.city].push(contact.toString());
+        return map;
+    }, {});
+
+    console.log("Persons Grouped by City:");
+    console.log(personsByCity);
+    console.log("---------------------------------------------------------------------------------");
+}
+
+// Function to View Persons by State
+function viewPersonsByState() {
+    let personsByState = addressBook.reduce((map, contact) => {
+        if (!map[contact.state]) {
+            map[contact.state] = [];
+        }
+        map[contact.state].push(contact.toString());
+        return map;
+    }, {});
+
+    console.log("Persons Grouped by State:");
+    console.log(personsByState);
+    console.log("---------------------------------------------------------------------------------");
+}
+
 // Adding Contacts
 addContact(new Contact("Himanshu", "Dwivedi", "GLA UNIVERSITY", "Mathura", "UP", "281406", "1234567890", "himanshu@gmail.com"));
 addContact(new Contact("Hima", "Dwivedi", "UNIVERSITY", "Mathura", "UP", "281406", "1234567891", "hima@gmail.com"));
@@ -139,6 +169,12 @@ searchByCity("Mathura");
 
 // Search for Contacts in UP
 searchByState("UP");
+
+// View Persons by City
+viewPersonsByCity();
+
+// View Persons by State
+viewPersonsByState();
 
 // Display All Contacts
 console.log("Updated Address Book:");
