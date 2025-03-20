@@ -78,8 +78,17 @@ function deleteContact(name) {
     }
 }
 
+// Function to Get Number of Contacts
+function getContactCount() {
+    let count = addressBook.reduce(count => count + 1, 0);
+    console.log("Total Number of Contacts:", count);
+    console.log();
+}
+
 // Adding Contacts
 addContact(new Contact("Himanshu", "Dwivedi", "GLA UNIVERSITY", "Mathura", "UP", "281406", "1234567890", "Himanshu@gmail.com"));
+addContact(new Contact("Hima", "Dwivedi", "UNIVERSITY", "Mathura", "UP", "281406", "1234567890", "Himanshu@gmail.com"));
+addContact(new Contact("Anshu", "Dwivedi", "GLAU", "Mathura", "UP", "281406", "1234567890", "Himanshu@gmail.com"));
 addContact(new Contact("Amit", "Sharma", "Delhi University", "Delhi", "DL", "110007", "9876543210", "amit.sharma@example.com"));
 
 // Editing Contact
@@ -87,6 +96,9 @@ editContact("Himanshu", { address: "New GLA UNIVERSITY", city: "Agra", zip: "282
 
 // Deleting Contact
 deleteContact("Himanshu");
+
+// Display Total Contacts Count
+getContactCount();
 
 // Display All Contacts
 console.log("Updated Address Book:");
